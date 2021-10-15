@@ -1,4 +1,4 @@
-#define KEYS 65
+#define KEYS 64
 static Key keys_ch[KEYS] = {
 	{ "§","°¬", XK_dead_circumflex, 0.75},
 	{ "1", "!|", XK_1, 1 },
@@ -13,8 +13,9 @@ static Key keys_ch[KEYS] = {
 	{ "0","=}", XK_0, 1 },
 	{ "'","?´", XK_ssharp, 1 },
 	{ "^","`~", XK_dead_acute, 1 },
-	{ "⌫", 0, XK_BackSpace, 0.75 },
-	{ "Del", 0, XK_Delete, 0.75},
+//	{ "Del", 0, XK_Delete,  },
+	{ "⌫", 0, XK_BackSpace, 1.5 },
+//	{ "Del", 0, XK_Delete, 0.75},
 	{ 0 }, /* New row */
 	{ "↹", 0, XK_Tab, 0.75 },
 	{ "q","Q@", XK_q, 1 },
@@ -57,7 +58,8 @@ static Key keys_ch[KEYS] = {
 	{ ",",";", XK_comma, 1 },
 	{ ".",":·", XK_period, 1 },
 	{ "-","_", XK_minus, 0.75 },
-	{ "↵", 0, XK_Return, 0.75 },
+	{ "Del", 0, XK_Delete, 0.75 },
+//	{ "↵", 0, XK_Return, 0.75 },
 	{ 0 }, /* New row */
 	{ "Ctrl", 0, XK_Control_L, 2 },
 	{ "Win",  0, XK_Super_L, 2 },
@@ -65,7 +67,9 @@ static Key keys_ch[KEYS] = {
 	{ "", 0, XK_space, 5 },
 	{ "Alt Gr", 0, XK_ISO_Level3_Shift, 2 }, //0xfe03
 	{ "Menu", 0, XK_Menu, 2 },
-	{ "Ctrl", 0, XK_Control_R, 2 },
+	{ "↵", 0, XK_Return, 2 }
+//	{ "Del", 0, XK_Delete, 2 },
+//	{ "Ctrl", 0, XK_Control_R, 2 },
 };
 
 Buttonmod buttonmods[] = {
