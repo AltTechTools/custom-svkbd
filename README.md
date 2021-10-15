@@ -18,7 +18,7 @@ You can create svkbd for additional layouts by doing:
 	$ make LAYOUT=$layout
 
 This will take the file `layout.$layout.h` and create `svkbd-$layout`.
-`make install` will then pick up the new file and install it accordingly.
+`make install LAYOUT=$layout` will then pick up the new file and install it accordingly.
 
 Layouts
 ---------
