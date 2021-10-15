@@ -2,16 +2,16 @@
 
 static Key keys_en[KEYS] = {
 	{ "Esc", "", XK_Escape, 1 },
-	{ "1", "!", XK_1, 1 },
-	{ "2", "@", XK_2, 1 },
-	{ "3", "#", XK_3, 1 },
-	{ "4", "$", XK_4, 1 },
+	{ "1", "+", XK_1, 1 },
+	{ "2", "\"", XK_2, 1 },
+	{ "3", "*", XK_3, 1 },
+	{ "4", "ç", XK_4, 1 },
 	{ "5", "%", XK_5, 1 },
-	{ "6", "^", XK_6, 1 },
-	{ "7", "&", XK_7, 1 },
-	{ "8", "*", XK_8, 1 },
-	{ "9", "(", XK_9, 1 },
-	{ "0", ")", XK_0, 1 },
+	{ "6", "&", XK_6, 1 },
+	{ "7", "/", XK_7, 1 },
+	{ "8", "(", XK_8, 1 },
+	{ "9", ")", XK_9, 1 },
+	{ "0", "=", XK_0, 1 },
 	{ "-", "_", XK_minus, 1 },
 
 	{ 0 }, /* New row */
@@ -27,7 +27,8 @@ static Key keys_en[KEYS] = {
 	{ 0, 0, XK_i, 1 },
 	{ 0, 0, XK_o, 1 },
 	{ 0, 0, XK_p, 1 },
-	{ "/", "?", XK_slash, .75 },
+	{ "'", "\"", XK_apostrophe, 1 },
+//	{ "<", "\̣", XK_backslash, .75 },
 
 	{ 0 }, /* New row */
 
@@ -41,8 +42,8 @@ static Key keys_en[KEYS] = {
 	{ 0, 0, XK_j, 1 },
 	{ 0, 0, XK_k, 1 },
 	{ 0, 0, XK_l, 1 },
-	{ ";", ":", XK_colon, 1 },
-	{ "'", "\"", XK_apostrophe, 1 },
+	{ "ü", "[", XK_bracketleft, 1 },
+	{ "!", "]", XK_bracketright, 1 },
 
 	{ 0 }, /* New row */
 
@@ -54,13 +55,13 @@ static Key keys_en[KEYS] = {
 	{ 0, 0, XK_b, 1 },
 	{ 0, 0, XK_n, 1 },
 	{ 0, 0, XK_m, 1 },
-	{ ",", "<", XK_comma, 1 },
-	{ ".", ">", XK_period, 1 },
+	{ ",", ";", XK_comma, 1 },
+	{ ".", ":", XK_period, 1 },
 	{ "⌫", 0, XK_BackSpace, 1 },
 
 	{ 0 }, /* New row */
 	{ "↺", 0, XK_Cancel, 1},
-	{ "Alt", 0, XK_Alt_L, 1 },
+	{ "Alt", 0, XK_Alt_R, 1 },
 	{ "", 0, XK_space, 4 },
 	{ "↓", 0, XK_Down, 1 },
 	{ "↑", 0, XK_Up, 1 },
@@ -106,10 +107,10 @@ static Key keys_minimal[KEYS] = {
 	{ 0 }, /* New row */
 
 	{ "↺", 0, XK_Cancel, 1},
-	{ "'", "\"", XK_apostrophe, 1 },
-	{ ",", "<", XK_comma, 1 },
+	{ "'", "?", XK_apostrophe, 1 },
+	{ ",", ";", XK_comma, 1 },
 	{ "", 0, XK_space, 4 },
-	{ ".", ">", XK_period, 1 },
+	{ ".", ":", XK_period, 1 },
 	{ "↲ Enter", 0, XK_Return, 2 },
 };
 
@@ -313,33 +314,35 @@ static Key overlay[OVERLAYS] = {
 	{ "😴", 0, 0x101f634 },
 	{ 0, 0, XK_Cancel }, /* XK_Cancel signifies  overlay boundary */
 	{ "/?", 0, XK_slash }, //New overlay - punctuation overlay
-	{ "1", "!", XK_1, 1 },
-	{ "2", "@", XK_2, 1 },
-	{ "3", "#", XK_3, 1 },
-	{ "4", "$", XK_4, 1 },
+	{ "1", "+", XK_1, 1 },
+	{ "2", "\"", XK_2, 1 },
+	{ "3", "*", XK_3, 1 },
+	{ "4", "ç", XK_4, 1 },
 	{ "5", "%", XK_5, 1 },
-	{ "6", "^", XK_6, 1 },
-	{ "7", "&", XK_7, 1 },
-	{ "8", "*", XK_8, 1 },
-	{ "9", "(", XK_9, 1 },
-	{ "0", ")", XK_0, 1 },
-	{ "'", "\"", XK_apostrophe, 1 },
-	{ "`", "~", XK_grave, 1 },
+	{ "6", "&", XK_6, 1 },
+	{ "7", "/", XK_7, 1 },
+	{ "8", "(", XK_8, 1 },
+	{ "9", ")", XK_9, 1 },
+	{ "0", "=", XK_0, 1 },
+	{ "'", "?", XK_apostrophe, 1 },
+	{ "^", "`", XK_grave, 1 },
 	{ "-", "_", XK_minus, 1 },
-	{ "=", "+", XK_plus, 1 },
-	{ "[", "{", XK_bracketleft, 1 },
-	{ "]", "}", XK_bracketright, 1 },
-	{ ",", "<", XK_comma, 1 },
-	{ ".", ">", XK_period, 1 },
-	{ "/", "?", XK_slash, 1 },
-	{ "\\", "|", XK_backslash, 1 },
-	{ "¡", 0, XK_exclamdown, 1 },
-	{ "?", 0, XK_questiondown, 1 },
-	{ "°", 0, XK_degree, 1 },
+	{ "1", "+", XK_plus, 1 },
+	{ "ü","[", XK_bracketleft, 1 },
+	{ "!", "]", XK_bracketright, 1 },
+	{ "ä", "{", XK_braceleft, 1 },
+	{ "$", "}", XK_braceright, 1 },
+	{ ",", ";", XK_comma, 1 },
+	{ ".", ":", XK_period, 1 },
+//	{ "/", "?", XK_slash, 1 },
+	{ "<", "\\", XK_backslash, 1 },
+//	{ "¡", 0, XK_exclamdown, 1 },
+//	{ "?", 0, XK_questiondown, 1 },
+	{ "§", "°", XK_degree, 1 },
 	{ "£", 0, XK_sterling, 1 },
 	{ "€", 0, XK_EuroSign, 1 },
 	{ "¥", 0, XK_yen, 1 },
-	{ ";", ":", XK_colon, 1 },
+	{ ".", ":", XK_colon, 1 },
 	{ 0, 0, XK_Cancel }, /* XK_Cancel signifies  overlay boundary */
 };
 
@@ -357,30 +360,30 @@ static Key keys_symbols[KEYS] = {
 	{ "F10", 0, XK_F10, 1 },
 	{ 0 }, /* New row */
 
-	{ "'\"", 0, XK_apostrophe, 1 },
-	{ "1", "!", XK_1, 1 },
-	{ "2", "@", XK_2, 1 },
-	{ "3", "#", XK_3, 1 },
-	{ "4", "$", XK_4, 1 },
+	{ "'", "?", XK_apostrophe, 1 },
+	{ "1", "+", XK_1, 1 },
+	{ "2", "\"", XK_2, 1 },
+	{ "3", "*", XK_3, 1 },
+	{ "4", "ç", XK_4, 1 },
 	{ "5", "%", XK_5, 1 },
-	{ "6", "^", XK_6, 1 },
-	{ "7", "&", XK_7, 1 },
-	{ "8", "*", XK_8, 1 },
-	{ "9", "(", XK_9, 1 },
-	{ "0", ")", XK_0, 1 },
+	{ "6", "&", XK_6, 1 },
+	{ "7", "/", XK_7, 1 },
+	{ "8", "(", XK_8, 1 },
+	{ "9", ")", XK_9, 1 },
+	{ "0", "=", XK_0, 1 },
 
 	{ 0 }, /* New row */
 
-	{ ".", ">", XK_period, 1 },
-	{ ",", "<", XK_comma, 1 },
-	{ "`", "~", XK_grave, 1 },
+	{ ".", ":", XK_period, 1 },
+	{ ",", ";", XK_comma, 1 },
+	{ "`", "^", XK_grave, 1 },
 	{ "-", "_", XK_minus, 1 },
-	{ "=", "+", XK_plus, 1 },
-	{ "\\", "|", XK_backslash, 1 },
-	{ ";", ":", XK_colon, 1 },
-	{ "/", "?", XK_slash, 1 },
-	{ "[", "{", XK_bracketleft, 1 },
-	{ "]", "}", XK_bracketright, 1 },
+//	{ "=", "+", XK_plus, 1 },
+	{ "<", "\\", XK_backslash, 1 },
+//	{ ";", ":", XK_colon, 1 },
+//	{ "/", "?", XK_slash, 1 },
+	{ "[", "ü", XK_bracketleft, 1 },
+	{ "]", "!", XK_bracketright, 1 },
 	{ "Del", 0, XK_Delete, 1 },
 
 	{ 0 }, /* New row */
@@ -400,7 +403,7 @@ static Key keys_symbols[KEYS] = {
 	{ "↺", 0, XK_Cancel, 1},
 	{ "Shift", 0, XK_Shift_L, 2 },
 	{ "Ctrl", 0, XK_Control_L, 1 },
-	{ "Alt", 0, XK_Alt_L, 1 },
+	{ "Alt", 0, XK_Alt_R, 1 },
 	{ "", 0, XK_space, 2 },
 	{ "↓", 0, XK_Down, 1 },
 	{ "↑", 0, XK_Up, 1 },
@@ -438,7 +441,7 @@ static Key keys_functions[KEYS] = {
 	{ "↺", 0, XK_Cancel, 1},
 	{ "Shift", 0, XK_Shift_L, 2 },
 	{ "Ctrl", 0, XK_Control_L, 1 },
-	{ "Alt", 0, XK_Alt_L, 1 },
+	{ "Alt", 0, XK_Alt_R, 1 },
 	{ "", 0, XK_space, 2 },
 	{ "↓", 0, XK_Down, 1 },
 	{ "↑", 0, XK_Up, 1 },
@@ -477,16 +480,16 @@ static Key keys_navigation[KEYS] = {
 
 static Key keys_ru[KEYS] = {
 	{ "Esc", 0, XK_Escape, 1 },
-	{ "1", "!", XK_1, 1 },
-	{ "2", "@", XK_2, 1 },
-	{ "3", "#", XK_3, 1 },
-	{ "4", "$", XK_4, 1 },
+	{ "1", "+", XK_1, 1 },
+	{ "2", "\"", XK_2, 1 },
+	{ "3", "*", XK_3, 1 },
+	{ "4", "ç", XK_4, 1 },
 	{ "5", "%", XK_5, 1 },
-	{ "6", "^", XK_6, 1 },
-	{ "7", "&", XK_7, 1 },
-	{ "8", "*", XK_8, 1 },
-	{ "9", "(", XK_9, 1 },
-	{ "0", ")", XK_0, 1 },
+	{ "6", "&", XK_6, 1 },
+	{ "7", "/", XK_7, 1 },
+	{ "8", "(", XK_8, 1 },
+	{ "9", ")", XK_9, 1 },
+	{ "0", "=", XK_0, 1 },
 	{ 0 }, /* New row */
 
 	{ "й", 0, XK_Cyrillic_shorti, 1 },
@@ -532,7 +535,7 @@ static Key keys_ru[KEYS] = {
 	{ "↺", 0, XK_Cancel, 1},
 	{ "Shift", 0, XK_Shift_L, 2 },
 	{ "Ctrl", 0, XK_Control_L, 1 },
-	{ "Alt", 0, XK_Alt_L, 1 },
+	{ "Alt", 0, XK_Alt_R, 1 },
 	{ "", 0, XK_space, 2 },
 	{ "↓", 0, XK_Down, 1 },
 	{ "↑", 0, XK_Up, 1 },
@@ -541,38 +544,38 @@ static Key keys_ru[KEYS] = {
 
 static Key keys_dialer[KEYS] = {
 	{ "Esc", 0, XK_Escape, 1 },
-	{ "1", "!" , XK_1, 1 },
-	{ "2", "@", XK_2, 1 },
-	{ "3", "#", XK_3, 1 },
+	{ "1", "+" , XK_1, 1 },
+	{ "2", "\"", XK_2, 1 },
+	{ "3", "*", XK_3, 1 },
 	{ "-", "_", XK_minus, 1 },
-	{ ",", "<", XK_comma, 1 },
+	{ ",", ";", XK_comma, 1 },
 	{ 0 }, /* New row */
 
 	{ "Shift", 0, XK_Shift_L, 1 },
-	{ "4", "$", XK_4, 1 },
+	{ "4", "ç", XK_4, 1 },
 	{ "5", "%", XK_5, 1 },
-	{ "6", "^", XK_6, 1 },
-	{ "=", "+", XK_equal, 1 },
-	{ "/", "?", XK_slash, 1 },
+	{ "6", "&", XK_6, 1 },
+	{ "0", "=", XK_equal, 1 },
+	{ "7", "/", XK_slash, 1 },
 	{ 0 }, /* New row */
 
 	{ "abc", 0, XK_Mode_switch, 1 },
-	{ "7", "&", XK_7, 1 },
-	{ "8", "*", XK_8, 1 },
-	{ "9", "(", XK_9, 1 },
+	{ "7", "/", XK_7, 1 },
+	{ "8", "(", XK_8, 1 },
+	{ "9", ")", XK_9, 1 },
 	{ "⌫Bksp", 0, XK_BackSpace, 2 },
 	{ 0 }, /* New row */
 
 	{ "↺", 0, XK_Cancel, 1},
 	{ "", 0, XK_space, 1 },
-	{ "0", ")", XK_0, 1 },
-	{ ".", ">", XK_period, 1 },
+	{ "0", "=", XK_0, 1 },
+	{ ".", ":", XK_period, 1 },
 	{ "↲ Enter", 0, XK_Return, 2},
 	{ 0 }, /* New row */
 	{ 0 }, /* Last item (double 0) */
 };
 
-#define LAYERS 6
+#define LAYERS 7
 static char* layer_names[LAYERS] = {
 	"en",
 	"symbols",
@@ -580,6 +583,7 @@ static char* layer_names[LAYERS] = {
 	"dialer",
 	"minimal",
 	"ru",
+	"functions",
 };
 
 static Key* available_layers[LAYERS] = {
@@ -588,10 +592,11 @@ static Key* available_layers[LAYERS] = {
 	keys_navigation,
 	keys_dialer,
 	keys_minimal,
-	keys_ru
+	keys_ru,
+	keys_functions
 };
 
 Buttonmod buttonmods[] = {
 	{ XK_Shift_L, Button2 },
-	{ XK_Alt_L, Button3 },
+	{ XK_Alt_R, Button3 },
 };
