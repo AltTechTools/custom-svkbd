@@ -1,13 +1,13 @@
 static const Bool wmborder = True;
-static int fontsize = 22;
+static int fontsize = 16;
 static double overlay_delay = 1.0; //in seconds
 static double repeat_delay = 0.75; //in seconds, will not work on keys with overlays
 static int scan_rate = 50; //scan rate in microseconds, affects key repetition rate
 static int heightfactor = 14; //one row of keys takes up 1/x of the screen height
-static int xspacing = 5;
-static int yspacing = 5;
+static int xspacing = 2;
+static int yspacing = 2;
 static const char *defaultfonts[] = {
-	"DejaVu Sans:bold:size=22"
+	"DejaVu Sans:bold:size=16"
 };
 static const char *defaultcolors[SchemeLast][2] = {
 	/*     fg         bg       */

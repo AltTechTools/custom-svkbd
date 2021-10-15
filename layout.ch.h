@@ -1,6 +1,6 @@
-#define KEYS 66
+#define KEYS 65
 static Key keys_ch[KEYS] = {
-	{ "§","°¬", XK_dead_circumflex, 1},
+	{ "§","°¬", XK_dead_circumflex, 0.75},
 	{ "1", "!|", XK_1, 1 },
 	{ "2","\"@", XK_2, 1 },
 	{ "3","*#", XK_3, 1 },
@@ -13,10 +13,10 @@ static Key keys_ch[KEYS] = {
 	{ "0","=}", XK_0, 1 },
 	{ "'","?´", XK_ssharp, 1 },
 	{ "^","`~", XK_dead_acute, 1 },
-	{ "⌫", 0, XK_BackSpace, 2 },
-	{ "Del", 0, XK_Delete, 1},
+	{ "⌫", 0, XK_BackSpace, 0.75 },
+	{ "Del", 0, XK_Delete, 0.75},
 	{ 0 }, /* New row */
-	{ "↹", 0, XK_Tab, 1 },
+	{ "↹", 0, XK_Tab, 0.75 },
 	{ "q","Q@", XK_q, 1 },
 	{ "w","Wł", XK_w, 1 },
 	{ "e","E€", XK_e, 1 },
@@ -27,11 +27,11 @@ static Key keys_ch[KEYS] = {
 	{ "i","I→", XK_i, 1 },
 	{ "o","Oœ", XK_o, 1 },
 	{ "p","Pþ", XK_p, 1 },
-	{ "ü","Ü[", 0xfc, 1 },
-	{ "¨","!]", 0xfe57, 1 },
-	{ "Enter", 0, XK_Return, 3 },
+	{ "ü","Ü[", 0xfc, 0.75 },
+	{ "¨","!]", 0xfe57, 0.75 },
+//	{ "Enter", 0, XK_Return, 3 },
 	{ 0 }, /* New row */
-	{ 0, 0, XK_Caps_Lock, 2 },
+	{ "️⮹", 0, XK_Caps_Lock, 1.75 },
 	{ "a","Aæ", XK_a, 1 },
 	{ "s","Sß", XK_s, 1 },
 	{ "d","Dð", XK_d, 1 },
@@ -42,10 +42,10 @@ static Key keys_ch[KEYS] = {
 	{ "k","Kĸ", XK_k, 1 },
 	{ "l","Lł", XK_l, 1 },
 	{ "ö","Ö", 0xf6, 1 },
-	{ "ä","Ä{", 0xe4, 1 },
-	{ "$","£}", 0x24, 1 },
+	{ "ä","Ä{", 0xe4, 0.75 },
+	{ "$","£}", 0x24, 0.75 },
 	{ 0 }, /* New row */
-	{ 0, 0, XK_Shift_L, 2 },
+	{ "⬆", 0, XK_Shift_L, 1.75 },
 	{ "<",">\\", XK_less, 1 },
 	{ "y","Y«", XK_y, 1 },
 	{ "x","X»", XK_x, 1 },
@@ -56,8 +56,8 @@ static Key keys_ch[KEYS] = {
 	{ "m","Mµ", XK_m, 1 },
 	{ ",",";", XK_comma, 1 },
 	{ ".",":·", XK_period, 1 },
-	{ "-","_", XK_minus, 1 },
-	{ 0, 0, XK_Shift_R, 2 },
+	{ "-","_", XK_minus, 0.75 },
+	{ "↵", 0, XK_Return, 0.75 },
 	{ 0 }, /* New row */
 	{ "Ctrl", 0, XK_Control_L, 2 },
 	{ "Win",  0, XK_Super_L, 2 },
