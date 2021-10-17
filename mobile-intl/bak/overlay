@@ -1,0 +1,5 @@
+	{ 0, 0, XK_y }, //New overlay
+	{ "ỳ", 0, XK_ygrave },
+	{ "ý", 0, XK_yacute },
+	{ "ŷ", 0, XK_ycircumflex },
+	{ "ÿ", 0, XK_ydiaeresis },
