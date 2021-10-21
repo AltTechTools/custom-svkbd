@@ -1,0 +1,13 @@
+#define LAYERS 3
+static char* layer_names[LAYERS] = {
+       "ch-android",
+       "andr-symbols1",
+       "andr-symbols2",
+};
+
+static Key* available_layers[LAYERS] = {
+        keys_ch_android,
+        keys_ch_andrsymb1,
+        keys_ch_andrsymb2,
+};
+
