@@ -1,0 +1,9 @@
+#define LAYERS 1
+static char* layer_names[LAYERS] = {
+       "ch",
+};
+
+static Key* available_layers[LAYERS] = {
+        keys_ch,
+};
+

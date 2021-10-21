@@ -1,0 +1,19 @@
+#define LAYERS 6
+static char* layer_names[LAYERS] = {
+        "en",
+        "symbols",
+        "navigation",
+        "dialer",
+        "minimal",
+        "ru",
+};
+
+static Key* available_layers[LAYERS] = {
+        keys_en,
+        keys_symbols,
+        keys_navigation,
+        keys_dialer,
+        keys_minimal,
+        keys_ru,
+};
+

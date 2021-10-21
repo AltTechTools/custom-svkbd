@@ -1,0 +1,10 @@
+".";":";XK_period;1
+",";";";XK_comma;1
+"`";"^";XK_grave;1
+"-";"_";XK_minus;1
+"=";"+";XK_plus;1
+";";":";XK_colon;1
+"/";"?";XK_slash;1
+"[";"ü";XK_bracketleft;1
+"]";"!";XK_bracketright;1
+"Del";0;XK_Delete;1

@@ -1,0 +1,11 @@
+"Esc";0;XK_Escape;1
+"▶";0;XF86XK_AudioPlay;1
+"●";0;XF86XK_AudioRecord;1
+"■";0;XF86XK_AudioStop;1
+"◂◂";0;XF86XK_AudioPrev;1
+"▸▸";0;XF86XK_AudioNext;1
+"♫M";0;XF86XK_AudioMute;1
+"♫-";0;XF86XK_AudioLowerVolume;1
+"♫+";0;XF86XK_AudioRaiseVolume;1
+"☀-";0;XF86XK_MonBrightnessDown;1
+"☀+";0;XF86XK_MonBrightnessUp;1	
