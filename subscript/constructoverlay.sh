@@ -2,11 +2,27 @@
 cd _overlay
 
 outputfile="../_overlay.def"
+
+if [ $(ls | wc -c) -lt 1 ]; then
+	totallines=1
+#	echo "x"
+
+	echo "" >  $outputfile
+	echo "#define OVERLAYS $totallines" >> $outputfile
+	echo "static Key overlay[OVERLAYS] = {" >>  $outputfile
+	echo "{ 0, 0, XK_Cancel }," >>  $outputfile
+	echo "};" >>  $outputfile
+	echo "" >>  $outputfile
+	return 0
+fi
+
+echo "totalline"
 totallines=$(../gettotaldeflen.sh)
+echo "flcnt"
 filecnt=$(ls | wc -l)
 filecnt="$(expr ${filecnt} \* '2')"
 totallines=$(expr "$totallines" + "$filecnt")
-echo "$totallines"
+echo "trace"
 
 echo "" >  $outputfile
 echo "#define OVERLAYS $totallines" >> $outputfile
