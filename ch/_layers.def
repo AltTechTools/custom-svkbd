@@ -1,9 +1,11 @@
-#define LAYERS 1
+#define LAYERS 2
 static char* layer_names[LAYERS] = {
        "ch",
+       "nav",
 };
 
 static Key* available_layers[LAYERS] = {
         keys_ch,
+        keys_navigation,
 };
 

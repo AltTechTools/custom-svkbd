@@ -1,4 +1,4 @@
-#define KEYS 65
+#define KEYS 66
 
 static Key keys_ch[KEYS] = {
         { "1", "!|", XK_1, 1 }, 
@@ -12,7 +12,7 @@ static Key keys_ch[KEYS] = {
         { "9", ")]", XK_9, 1 }, 
         { "0", "=}", XK_0, 1 }, 
         { "'", "?´", XK_ssharp, 1 }, 
-        { "^", "`~", XK_dead_acute, 1 }, 
+        { "^", "`~", XK_dead_circumflex, 1 }, 
         { "⌫", 0, XK_BackSpace, 1.5 }, 
 
         { 0 }, /* New row */
@@ -58,7 +58,7 @@ static Key keys_ch[KEYS] = {
         { "b", "B”", XK_b, 1 }, 
         { "n", "Nn", XK_n, 1 }, 
         { "m", "Mµ", XK_m, 1 }, 
-        { ", ",", ", XK_comma }, 
+        { ",", 0, XK_comma, 1 }, 
         { ".", ":·", XK_period, 1 }, 
         { "-", "_", XK_minus, 0.75 }, 
         { "Del", 0, XK_Delete, 0.75 }, 
@@ -67,11 +67,42 @@ static Key keys_ch[KEYS] = {
 
         { "Ctrl", 0, XK_Control_L, 2 }, 
         { "Win",  0, XK_Super_L, 2 }, 
-        { "Alt", 0, XK_Alt_L, 2 }, 
+        { "Alt", 0, XK_Alt_L, 1 }, 
         { "", 0, XK_space, 5 }, 
         { "Alt Gr", 0, XK_ISO_Level3_Shift, 2 }, 
-        { "Menu", 0, XK_Menu, 2 }, 
+        { "↺", 0, XK_Cancel, 2 }, 
+        { "Menu", 0, XK_Menu, 1 }, 
         { "↵", 0, XK_Return, 2 }, 
+
+        { 0 }, /* New row */
+
+
+        { 0 }, /* ending row */
+
+};
+
+static Key keys_navigation[KEYS] = {
+        { "Esc", 0, XK_Escape, 1 }, 
+        { "⇤", 0, XK_Home, 1 }, 
+        { "↑", 0, XK_Up, 1 }, 
+        { "⇥", 0, XK_End, 1 }, 
+        { "⇈", 0, XK_Prior, 1 }, 
+
+        { 0 }, /* New row */
+
+        { "Shift", 0, XK_Shift_L, 1 }, 
+        { "←", 0, XK_Left, 1 }, 
+        { "", 0, XK_space, 1 }, 
+        { "→", 0, XK_Right, 1 }, 
+        { "⇊", 0, XK_Next, 1 }, 
+
+        { 0 }, /* New row */
+
+        { "↺", 0, XK_Cancel, 1, }, 
+        { "⌫Bksp", 0, XK_BackSpace, 1 }, 
+        { "↓", 0, XK_Down, 1 }, 
+        { "Tab", 0, XK_Tab, 1 }, 
+        { "↲ Enter", 0, XK_Return, 1 }, 
 
         { 0 }, /* New row */
 
@@ -113,13 +144,15 @@ static Key overlay[OVERLAYS] = {
         { 0, 0, XK_Cancel },  /* XK_Cancel signifies  overlay boundary */
 };
 
-#define LAYERS 1
+#define LAYERS 2
 static char* layer_names[LAYERS] = {
        "ch",
+       "nav",
 };
 
 static Key* available_layers[LAYERS] = {
         keys_ch,
+        keys_navigation,
 };
 
 Buttonmod buttonmods[] = {

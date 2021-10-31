@@ -11,7 +11,7 @@ static Key keys_ch[KEYS] = {
         { "9", ")]", XK_9, 1 }, 
         { "0", "=}", XK_0, 1 }, 
         { "'", "?´", XK_ssharp, 1 }, 
-        { "^", "`~", XK_dead_acute, 1 }, 
+        { "^", "`~", XK_dead_circumflex, 1 }, 
         { "⌫", 0, XK_BackSpace, 1.5 }, 
 
         { 0 }, /* New row */
@@ -57,7 +57,7 @@ static Key keys_ch[KEYS] = {
         { "b", "B”", XK_b, 1 }, 
         { "n", "Nn", XK_n, 1 }, 
         { "m", "Mµ", XK_m, 1 }, 
-        { ", ",", ", XK_comma }, 
+        { ",", 0, XK_comma, 1 }, 
         { ".", ":·", XK_period, 1 }, 
         { "-", "_", XK_minus, 0.75 }, 
         { "Del", 0, XK_Delete, 0.75 }, 
@@ -66,10 +66,11 @@ static Key keys_ch[KEYS] = {
 
         { "Ctrl", 0, XK_Control_L, 2 }, 
         { "Win",  0, XK_Super_L, 2 }, 
-        { "Alt", 0, XK_Alt_L, 2 }, 
+        { "Alt", 0, XK_Alt_L, 1 }, 
         { "", 0, XK_space, 5 }, 
         { "Alt Gr", 0, XK_ISO_Level3_Shift, 2 }, 
-        { "Menu", 0, XK_Menu, 2 }, 
+        { "↺", 0, XK_Cancel, 2 }, 
+        { "Menu", 0, XK_Menu, 1 }, 
         { "↵", 0, XK_Return, 2 }, 
 
         { 0 }, /* New row */
