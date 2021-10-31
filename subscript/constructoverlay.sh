@@ -37,7 +37,7 @@ do
 	do
 		title=$(printf "%s" "${line}" | awk '{print $1}' FS=";")
 		key=$(printf "%s" "${line}" | awk '{print $2}' FS=";")
-		printf "%s\n" "        { $title, 0, $key }, " >>  $outputfile
+		printf "%s\n" "        { \"$title\", 0, $key }, " >>  $outputfile
 	done < "$filename"
 	echo "        { 0, 0, XK_Cancel },  /* XK_Cancel signifies  overlay boundary */" >>  $outputfile
 done
