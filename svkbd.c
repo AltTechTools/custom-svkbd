@@ -83,6 +83,7 @@ static void simulate_keyrelease(KeySym keysym);
 static void showoverlay(int idx);
 static void hideoverlay();
 static void cyclelayer();
+static void updatelayerinfo();
 static void setlayer();
 static void togglelayer();
 static void unpress(Key *k, KeySym buttonmod);
@@ -114,8 +115,8 @@ static KeySym overlaykeysym = 0; /* keysym for which the overlay is presented */
 static int releaseprotect = 0; /* set to 1 after overlay is shown, protecting against immediate release */
 static int tmp_keycode = 1;
 static int rows = 0, ww = 0, wh = 0, wx = 0, wy = 0;
-static int simulateoutput = 1; /* simulate key presses for X */
-static int printoutput = 0; /* print key pressed to stdout */
+//static int simulateoutput = 1; /* simulate key presses for X */
+//static int printoutput = 0; /* print key pressed to stdout */
 static char *name = "svkbd";
 static int debug = 0;
 static int numlayers = 0;
@@ -481,7 +482,11 @@ press(Key *k, KeySym buttonmod)
 int
 tmp_remap(KeySym keysym)
 {
-	XChangeKeyboardMapping(dpy, tmp_keycode, 1, &keysym, 1);
+	//XChangeKeyboardMapping(dpy, tmp_keycode, 1, &keysym, 1);
+
+	//acctually implement fix from referenced stackoerflow question
+	KeySym keysym_list[2] = { keysym, keysym };
+	XChangeKeyboardMapping(dpy, tmp_keycode, 2, keysym_list, 1);
 	XSync(dpy, False);
 
 	return tmp_keycode;
@@ -539,6 +544,8 @@ simulate_keypress(KeySym keysym)
 		return;
 
 	code = XKeysymToKeycode(dpy, keysym);
+//tst fud
+	//code = 0;
 	if (code == 0)
 		code = tmp_remap(keysym);
 	XTestFakeKeyEvent(dpy, code, True, 0);
@@ -553,6 +560,7 @@ simulate_keyrelease(KeySym keysym)
 		return;
 
 	code = XKeysymToKeycode(dpy, keysym);
+	//code = 0; //tst fud
 	if (code == 0)
 		code = tmp_remap(keysym);
 	XTestFakeKeyEvent(dpy, code, False, 0);
@@ -1007,9 +1015,22 @@ setlayer(void)
 }
 
 void
+jumptolayer(int layerno){
+	currentlayer=layerno;
+	updatelayerinfo();
+}
+
+void
 cyclelayer(void)
 {
 	currentlayer++;
+	updatelayerinfo();
+}
+
+void
+updatelayerinfo(void)
+{
+//	currentlayer++;
 	if (currentlayer >= numlayers)
 		currentlayer = 0;
 	printdbg("Cycling to layer %d\n", currentlayer);

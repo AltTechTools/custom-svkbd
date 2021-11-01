@@ -6,6 +6,8 @@ static int scan_rate = 50; //scan rate in microseconds, affects key repetition r
 static int heightfactor = 14; //one row of keys takes up 1/x of the screen height
 static int xspacing = 2;
 static int yspacing = 2;
+static int simulateoutput = 1; //simulates key send
+static int printoutput = 0; //sends presed keys to stdout
 static const char *defaultfonts[] = {
 	"DejaVu Sans:bold:size=16"
 };

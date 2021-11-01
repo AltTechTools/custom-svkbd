@@ -8,4 +8,4 @@
 "i";0;XK_i;1
 "o";0;XK_o;1
 "p";0;XK_p;1
-"ü";0;XK_udiaeresis;1
+"ü";0;0x10000fc;1
