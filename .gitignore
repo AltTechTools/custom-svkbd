@@ -3,7 +3,9 @@ svkbd-mobile-intl
 svkbd-ch
 svkbd-ch-text
 svkbd-ch-android
+bak.defs
 bak.defs/*
+bak.script
 bak.script/*
 */*
 !subscript
