@@ -5,3 +5,6 @@ svkbd-ch-text
 svkbd-ch-android
 bak.defs/*
 bak.script/*
+*/*
+!subscript
+svkbd-*

@@ -1,5 +1,5 @@
 #!/bin/sh
-folder="$1"
+folder=$(echo "$1"| sed 's/\///')
 
 if [ "$1" = "" ]; then
   test -e /usr/bin/dmenu || echo "es muss ein Ordner als Parameter mitgegeben werden!" || exit 0

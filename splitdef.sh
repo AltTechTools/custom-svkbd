@@ -1,8 +1,8 @@
 #!/bin/sh
-folder="$1" #"keys_en"
+folder="$1"
 [ "$folder" = "" ] && echo "No Layout Name passed" && exit 0
-#cd "$folder" || exit 1
 
+folder=$(echo "${folder}" | sed 's/layout.//' | sed 's/\.h//')
 delimiter="{;}"
 inputfile="layout.$folder.h"
 mainpath="./$folder"
@@ -16,7 +16,7 @@ islayersname=0
 islayerkey=0
 isbuttonmod=0
 layerlineno=0
-[ -d "$folder" ] || mkdir "$folder"
+[ -d "$folder" ] || mkdir -- "$folder"
 while read -r line
 do
 if [ "$line" = "" ]; then
@@ -42,7 +42,6 @@ else
 		islayerkey=0
 		isbuttonmod=0
 	fi
-
 	if [ "$line" = "static Key* available_layers[LAYERS] = {" ]; then
 		echo "Layer variable definition..."
 		islayerkey=1
@@ -50,7 +49,6 @@ else
 		isoverlay=0
 		iskey=0
 		isbuttonmod=0
-
 		layerlineno=0
 	fi
 	if [ "$line" = "Buttonmod buttonmods[] = {" ]; then
@@ -125,7 +123,6 @@ else
                         else
 				printf "%s\n" "${primsymb}${delimiter}${altsymb}${delimiter}${keysym}${delimiter}${keyscaling}" >> "$path/$keylinename"
                         fi
-
 		fi
 	fi
 	if [ $isoverlay -eq 1 ]; then
