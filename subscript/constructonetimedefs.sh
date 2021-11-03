@@ -1,5 +1,6 @@
 #!/bin/sh
 
+delimiter=$(./getdelimiter.sh)
 outputfileButtons="_buttonmods.def"
 outputfileLayers="_layers.def"
 outputfileLayersTmpName="_layers.def.name"
@@ -14,8 +15,8 @@ echo "static Key* available_layers[LAYERS] = {" > $outputfileLayersTmpKeys
 
 for defline in $(cat _naming)
 do
-	valuename=$(printf "%s\n" "${defline}" | awk '{print $1}' FS=';')
-	valuekeys=$(printf "%s\n" "${defline}" | awk '{print $2}' FS=';')
+	valuename=$(printf "%s\n" "${defline}" | awk '{print $1}' FS="${delimiter}")
+	valuekeys=$(printf "%s\n" "${defline}" | awk '{print $2}' FS="${delimiter}")
 	printf "%s\n" "       \"${valuename}\"," >> $outputfileLayersTmpName
 	printf "%s\n" "        ${valuekeys}," >> $outputfileLayersTmpKeys
 done
@@ -32,8 +33,8 @@ rm "$outputfileLayersTmpKeys"
 echo "Buttonmod buttonmods[] = {" > $outputfileButtons
 for defline in $(cat _buttonmods)
 do
-	key=$(printf "%s\n" "${defline}"| awk '{print $1}' FS=';')
-	value=$(printf "%s\n" "${defline}" | awk '{print $2}' FS=';')
+	key=$(printf "%s\n" "${defline}"| awk '{print $1}' FS="${delimiter}")
+	value=$(printf "%s\n" "${defline}" | awk '{print $2}' FS="${delimiter}")
 	printf "%s\n" "        { $key, $value }," >> $outputfileButtons
 done
 

@@ -3,6 +3,7 @@ folder="$1" #"keys_en"
 [ "$folder" = "" ] && echo "No Layout Name passed" && exit 0
 #cd "$folder" || exit 1
 
+delimiter="{;}"
 inputfile="layout.$folder.h"
 mainpath="./$folder"
 path="$mainpath"
@@ -19,13 +20,8 @@ layerlineno=0
 while read -r line
 do
 if [ "$line" = "" ]; then
- echo "empty skipped" > /dev/null
+	echo "empty skipped" > /dev/null
 else
-#	title=$(printf "%s" "${line}" | awk '{print $1}' FS=";")
-#        otherchars=$(printf "%s" "${line}" | awk '{print $2}' FS=";")
-#        key=$(printf "%s" "${line}" | awk '{print $3}' FS=";")
-#        sizeing=$(printf "%s" "${line}" | awk '{print $4}' FS=";")
-#	printf "%s\n" "        { ${title}, ${otherchars}, ${key}, ${sizeing} }, " >>  $outputfile
 	keyline=$(echo "$line" | grep -c "^static Key keys_")
 	overlayline=$(echo "$line" | grep -c "^static Key overlay")
 	if [ "$line" = "};" ]; then
@@ -67,7 +63,6 @@ else
 		iskey=0
 	fi
 
-# these 2 eventually need to be connected
 	if [ $islayersname -eq 1 ]; then
 		if [ "$line" != "static char* layer_names[LAYERS] = {" ]; then
 			thislayer=$(echo "$line" | awk '{print $2}' FS='"')
@@ -83,99 +78,75 @@ else
 			layerlineno=$(expr $layerlineno + 1)
 			thiskey=$(echo "$line" | awk '{print $1}' FS=',')
 			thislayer=$(echo "$layersnametexts" | awk "NR==$layerlineno{print \$0}")
-			echo "$thislayer;$thiskey" >> "$mainpath/_naming"
+			echo "$thislayer$delimiter$thiskey" >> "$mainpath/_naming"
 		else
 			[ -e "$mainpath/_naming" ] && rm "$mainpath/_naming"
 		fi
 	fi
-#this only onece
 	if [ $isbuttonmod -eq 1 ]; then
 		if [ "$line" != "Buttonmod buttonmods[] = {" ]; then
-			echo "$line" | sed 's/ //g' | sed 's/{//' | sed 's/}//'
+			cleanedline=$(echo "$line" | sed 's/ //g' | sed 's/{//' | sed 's/}//')
+			key=$(echo "${cleanedline}" | awk '{print $1}' FS=',')
+			button=$(echo "${cleanedline}" | awk '{print $2}' FS=',')
+			echo "$key$delimiter$button" >> "$mainpath/_buttonmods"
 		else
-			[ -e "$mainpath/_buttonmods"]
+			[ -e "$mainpath/_buttonmods" ] && rm "$mainpath/_buttonmods"
 		fi
 	fi
-
 	if [ $overlayline -eq 1 ]; then
 		isoverlay=1
 		iskey=0
-#		outputname=$(echo "$line")
 		outputname="_overlay"
-#		echo "$outputname"
 		path="$mainpath/$outputname"
 		[ -d "$path" ] || mkdir -p "$path"
 	fi
 	if [ $keyline -eq 1 ]; then
-		# && echo "$line"
 		iskey=1
 		isoverlay=0
 		outputname=$(echo "$line" | awk '{print $1}' FS="[" | sed 's/static Key //')
-#		echo "$outputname"
 		path="$mainpath/$outputname"
 		[ -d "$path" ] || mkdir -p "$path"
 	fi
-
-
-#        { "1", "!", XK_1, 1 },
-#        { 0 }, /* New row */
-
-
 	if [ $iskey -eq 1 ]; then
 		if [ $keyline -lt 1 ]; then
-			cleanedline=$(echo "$line" | sed 's/ //g'   | sed 's/{//g'   | sed 's/}//g')
-                        primsymb=$(echo "${cleanedline}"|awk '{print $1}' FS=",")
-                        altsymb=$(echo "${cleanedline}"|awk '{print $2}' FS=",")
-                        keysym=$(echo "${cleanedline}"|awk '{print $3}' FS=",")
-                        keyscaling=$(echo "${cleanedline}"|awk '{print $4}' FS=",")
-			#keylinename=""
-			#keylineno=0
-#prob faulty, only overlay leaves out the first char 
+			cleanedline=$(printf "%s" "$line" | sed 's/{//g'   | sed 's/}//g')
+                        primsymb=$(printf "%s" "${cleanedline}"|awk '{print $1}' FS=", " | sed 's/ //g')
+                        altsymb=$(printf "%s" "${cleanedline}"|awk '{print $2}' FS=", " | sed 's/ //g')
+                        keysym=$(printf "%s" "${cleanedline}"|awk '{print $3}' FS=", " | sed 's/ //g')
+                        keyscaling=$(printf "%s" "${cleanedline}"|awk '{print $4}' FS=", " | sed 's/ //g' | sed 's/,//g')
 			if [ "$keylinename" = "" ]; then
 				keylineno=$(expr $keylineno + 1)
 				keylinename="ln_$keylineno"
-#				echo "$keylinename"
 				[ -e  "$path/$keylinename" ] && rm "$path/$keylinename"
 			fi
-#			else
-				endcount=$(echo "$line" | grep -c "\{ 0 \},")
-				if [ $endcount -gt 0 ]; then
-					#keylinename=""
-					#keylineno=$keylineno+1
-					keylinename=""
-                                else
-					#echo "$primsymb;$altsymb;$keysym;$keyscaling"
-#					echo "$primsymb;$altsymb;$keysym;$keyscaling"
-                            		echo "$primsymb;$altsymb;$keysym;$keyscaling" >> "$path/$keylinename"
-                                fi
-#			fi
+			endcount=$(echo "$line" | grep -c "\{ 0 \},")
+			if [ $endcount -gt 0 ]; then
+				keylinename=""
+                        else
+				printf "%s\n" "${primsymb}${delimiter}${altsymb}${delimiter}${keysym}${delimiter}${keyscaling}" >> "$path/$keylinename"
+                        fi
 
 		fi
 	fi
-
 	if [ $isoverlay -eq 1 ]; then
 		if [ $overlayline -lt 1 ]; then
-			#echo "some overlayline $line"
-			cleanedline=$(echo "$line" | sed 's/ //g'   | sed 's/{//g'   | sed 's/}//g')
-			primsymb=$(echo "${cleanedline}"|awk '{print $1}' FS=",")
-			altsymb=$(echo "${cleanedline}"|awk '{print $2}' FS=",")
-			keysym=$(echo "${cleanedline}"|awk '{print $3}' FS=",")
-			#echo "$primsymb-$altsymb-$keysym"
+			cleanedline=$(printf "%s" "${line}" | sed 's/{//g'   | sed 's/}//g')
+			primsymb=$(printf "%s" "${cleanedline}"|awk '{print $1}' FS=", " | sed 's/ //g'| sed 's/"//g')
+			altsymb=$(printf "%s" "${cleanedline}"|awk '{print $2}' FS=", " | sed 's/ //g')
+			keysym=$(printf "%s" "${cleanedline}"|awk '{print $3}' FS=", " | sed 's/ //g' | sed 's/,//g')
 			if [ "$overlayonkey" = "" ]; then
-				#echo "$keysym"
 				overlayonkey="$keysym"
 				[ -e  "$path/$overlayonkey" ] && rm "$path/$overlayonkey"
-				touch "$path/$overlayonkey"
 			else
 				if [ "$keysym" = "XK_Cancel" ]; then
 					overlayonkey=""
 				else
-					#echo "$overlayonkey -> $keysym"
-					echo "$primsymb;$altsymb;$keysym" >> "$path/$overlayonkey"
+					printf "%s\n" "${primsymb}${delimiter}${altsymb}${delimiter}${keysym}" >> "$path/$overlayonkey"
+					printf "%s\n" "${primsymb}${delimiter}${altsymb}${delimiter}${keysym}"
 				fi
 			fi
 		fi
-### do not go by 0,0 , go by first element aftr xk_cancel		
 	fi
 fi
 done < "$inputfile"
+echo "Done. see $folder"

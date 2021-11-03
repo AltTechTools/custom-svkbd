@@ -3,6 +3,7 @@ folder="$1" #"keys_en"
 [ "$folder" = "" ] && echo "No Layout Name passed" && exit 0
 cd "$folder" || exit 1
 
+delimiter=$(./../getdelimiter.sh)
 outputfile="../${folder}.def"
 outputdef=$(echo $folder | tr '[:lower:]' '[:upper:]')
 totallines=$(../gettotaldeflen.sh) #//+amount of files
@@ -43,10 +44,10 @@ do
                 #key=$(echo "${line}" | awk '{print $3}' FS=";")
                 #sizeing=$(echo "${line}" | awk '{print $4}' FS=";")
 
-		title=$(printf "%s" "${line}" | awk '{print $1}' FS=";")
-                otherchars=$(printf "%s" "${line}" | awk '{print $2}' FS=";")
-                key=$(printf "%s" "${line}" | awk '{print $3}' FS=";")
-                sizeing=$(printf "%s" "${line}" | awk '{print $4}' FS=";")
+		title=$(printf "%s" "${line}" | awk '{print $1}' FS="${delimiter}")  #";")
+                otherchars=$(printf "%s" "${line}" | awk '{print $2}' FS="${delimiter}")   #";")
+                key=$(printf "%s" "${line}" | awk '{print $3}' FS="${delimiter}") #";")
+                sizeing=$(printf "%s" "${line}" | awk '{print $4}' FS="${delimiter}")  #";")
 
                 #echo "        { ${title}, ${otherchars}, ${key}, ${sizeing} }, " >>  $outputfile
                 printf "%s\n" "        { ${title}, ${otherchars}, ${key}, ${sizeing} }, " >>  $outputfile

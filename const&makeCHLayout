@@ -1,7 +1,0 @@
-#!/bin/sh
-echo "Generating Layouts..."
-./genlayout_definitionClass.sh ch
-
-echo "Building Layouts..."
-sudo make install LAYOUT=ch
-#sudo make install LAYOUT=ch-text

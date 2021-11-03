@@ -1,5 +1,5 @@
 #!/bin/sh
-folder="$1" #"mobile-intl"
+folder="$1"
 
 if [ "$1" = "" ]; then
   test -e /usr/bin/dmenu || echo "es muss ein Ordner als Parameter mitgegeben werden!" || exit 0
@@ -13,7 +13,6 @@ cd "$folder"
 
 for subscript in $(ls ../subscript/)
 do
-	#echo "x$subscript"
 	ln -s -f "../subscript/$subscript" "$subscript"
 done
 

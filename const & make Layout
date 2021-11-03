@@ -4,6 +4,7 @@ layout=$(echo "$1" | sed 's/\///')
 echo "Generating Layouts..."
 ./genlayout_definitionClass.sh "$layout"
 
+echo ""
 echo "Building Layouts..."
-sudo make install LAYOUT="$layout"
-#sudo make install LAYOUT=ch-text
+./makeLayout.sh "$layout"
+#sudo make install LAYOUT="$layout"
