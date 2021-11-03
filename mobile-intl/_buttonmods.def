@@ -1,4 +1,0 @@
-Buttonmod buttonmods[] = {
-        { XK_Shift_L, XK_Shift_L },
-        { XK_Alt_L, XK_Alt_L },
-};

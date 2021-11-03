@@ -1,1 +1,0 @@
-../subscript/gettotaldeflen.sh

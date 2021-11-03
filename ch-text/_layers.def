@@ -1,9 +1,0 @@
-#define LAYERS 1
-static char* layer_names[LAYERS] = {
-       "ch-text",
-};
-
-static Key* available_layers[LAYERS] = {
-        ch-text,
-};
-

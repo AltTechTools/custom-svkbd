@@ -1,8 +1,0 @@
-	{ "è", 0, XK_egrave },
-	{ "é", 0, XK_eacute },
-	{ "ê", 0, XK_ecircumflex },
-	{ "ë", 0, XK_ediaeresis },
-	{ "ę", 0, XK_eogonek },
-	{ "ē", 0, XK_emacron },
-	{ "ė", 0, XK_eabovedot },
-	{ "ě", 0, XK_ecaron },
