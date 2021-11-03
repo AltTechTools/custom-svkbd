@@ -14,6 +14,7 @@ keylineno=0
 islayersname=0
 islayerkey=0
 isbuttonmod=0
+layerlineno=0
 [ -d "$folder" ] || mkdir "$folder"
 while read -r line
 do
@@ -34,8 +35,10 @@ else
 		keylineno=0
 		isbuttonmod=0
 		islayerkey=0
+		islayersname=0
 	fi
 	if [ "$line" = "static char* layer_names[LAYERS] = {" ]; then
+		layersnametexts=""
 		islayersname=1
 		isoverlay=0
 		iskey=0
@@ -49,6 +52,12 @@ else
 		isoverlay=0
 		iskey=0
 		isbuttonmod=0
+
+		layerlineno=0
+		#echo "prev found names:"
+		#echo "$layersnametexts"
+		#echo "and now keys:"
+
 	fi
 	if [ "$line" = "Buttonmod buttonmods[] = {" ]; then
 		isbuttonmod=1
@@ -60,15 +69,31 @@ else
 
 # these 2 eventually need to be connected
 	if [ $islayersname -eq 1 ]; then
-		echo "$islayersname"
+		if [ "$line" != "static char* layer_names[LAYERS] = {" ]; then
+			thislayer=$(echo "$line" | awk '{print $2}' FS='"')
+			if [ "$layersnametexts" = "" ]; then
+				layersnametexts=$(echo "$thislayer")
+			else
+				layersnametexts=$({ echo "$layersnametexts"; echo "$thislayer"; })
+			fi
+		fi
 	fi
-	if [ $islayersname -eq 1 ]; then
-		echo "$islayersname"
+	if [ $islayerkey -eq 1 ]; then
+		if [ "$line" != "static Key* available_layers[LAYERS] = {" ]; then
+			layerlineno=$(expr $layerlineno + 1)
+			thiskey=$(echo "$line" | awk '{print $1}' FS=',')
+			thislayer=$(echo "$layersnametexts" | awk "NR==$layerlineno{print \$0}")
+			echo "$thislayer;$thiskey" >> "$mainpath/_naming"
+		else
+			[ -e "$mainpath/_naming" ] && rm "$mainpath/_naming"
+		fi
 	fi
 #this only onece
 	if [ $isbuttonmod -eq 1 ]; then
 		if [ "$line" != "Buttonmod buttonmods[] = {" ]; then
-			echo "$line"
+			echo "$line" | sed 's/ //g' | sed 's/{//' | sed 's/}//'
+		else
+			[ -e "$mainpath/_buttonmods"]
 		fi
 	fi
 
