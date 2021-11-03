@@ -34,6 +34,7 @@ else
 		islayersname=0
 	fi
 	if [ "$line" = "static char* layer_names[LAYERS] = {" ]; then
+		echo "Layer naming definition..."
 		layersnametexts=""
 		islayersname=1
 		isoverlay=0
@@ -43,6 +44,7 @@ else
 	fi
 
 	if [ "$line" = "static Key* available_layers[LAYERS] = {" ]; then
+		echo "Layer variable definition..."
 		islayerkey=1
 		islayersname=0
 		isoverlay=0
@@ -50,12 +52,9 @@ else
 		isbuttonmod=0
 
 		layerlineno=0
-		#echo "prev found names:"
-		#echo "$layersnametexts"
-		#echo "and now keys:"
-
 	fi
 	if [ "$line" = "Buttonmod buttonmods[] = {" ]; then
+		echo "Buttonmod definition..."
 		isbuttonmod=1
 		islayerkey=0
 		islayersname=0
@@ -118,6 +117,7 @@ else
 				keylineno=$(expr $keylineno + 1)
 				keylinename="ln_$keylineno"
 				[ -e  "$path/$keylinename" ] && rm "$path/$keylinename"
+				echo "Key Definition $path/$keylinename..."
 			fi
 			endcount=$(echo "$line" | grep -c "\{ 0 \},")
 			if [ $endcount -gt 0 ]; then
@@ -136,13 +136,13 @@ else
 			keysym=$(printf "%s" "${cleanedline}"|awk '{print $3}' FS=", " | sed 's/ //g' | sed 's/,//g')
 			if [ "$overlayonkey" = "" ]; then
 				overlayonkey="$keysym"
+				echo "Overlay for $keysym..."
 				[ -e  "$path/$overlayonkey" ] && rm "$path/$overlayonkey"
 			else
 				if [ "$keysym" = "XK_Cancel" ]; then
 					overlayonkey=""
 				else
 					printf "%s\n" "${primsymb}${delimiter}${altsymb}${delimiter}${keysym}" >> "$path/$overlayonkey"
-					printf "%s\n" "${primsymb}${delimiter}${altsymb}${delimiter}${keysym}"
 				fi
 			fi
 		fi
