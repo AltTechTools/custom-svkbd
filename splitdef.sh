@@ -106,7 +106,7 @@ else
 	fi
 	if [ $iskey -eq 1 ]; then
 		if [ $keyline -lt 1 ]; then
-			cleanedline=$(printf "%s" "$line" | sed 's/{//g'   | sed 's/}//g')
+			cleanedline=$(printf "%s" "$line" | sed 's/{ //g'   | sed 's/ }//g')
                         primsymb=$(printf "%s" "${cleanedline}"|awk '{print $1}' FS=", " | sed 's/ //g')
                         altsymb=$(printf "%s" "${cleanedline}"|awk '{print $2}' FS=", " | sed 's/ //g')
                         keysym=$(printf "%s" "${cleanedline}"|awk '{print $3}' FS=", " | sed 's/ //g')
