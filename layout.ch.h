@@ -11,7 +11,7 @@ static Key keys_ch[KEYS] = {
         { "8", "(¢", XK_8, 1 }, 
         { "9", ")]", XK_9, 1 }, 
         { "0", "=}", XK_0, 1 }, 
-        { "'", "?´", XK_ssharp, 1 }, 
+        { "'", "?´", XK_question, 1 }, 
         { "^", "`~", XK_dead_circumflex, 1 }, 
         { "⌫", 0, XK_BackSpace, 1.5 }, 
 
@@ -66,10 +66,10 @@ static Key keys_ch[KEYS] = {
         { 0 }, /* New row */
 
         { "Ctrl", 0, XK_Control_L, 2 }, 
-        { "Win",  0, XK_Super_L, 2 }, 
+        { "Win", 0, XK_Super_L, 2 }, 
         { "Alt", 0, XK_Alt_L, 1 }, 
         { "", 0, XK_space, 5 }, 
-        { "Alt Gr", 0, XK_ISO_Level3_Shift, 2 }, 
+        { "AltGr", 0, XK_ISO_Level3_Shift, 2 }, 
         { "↺", 0, XK_Cancel, 2 }, 
         { "Menu", 0, XK_Menu, 1 }, 
         { "↵", 0, XK_Return, 2 }, 
@@ -98,11 +98,11 @@ static Key keys_navigation[KEYS] = {
 
         { 0 }, /* New row */
 
-        { "↺", 0, XK_Cancel, 1, }, 
+        { "↺", 0, XK_Cancel, 1 }, 
         { "⌫Bksp", 0, XK_BackSpace, 1 }, 
         { "↓", 0, XK_Down, 1 }, 
         { "Tab", 0, XK_Tab, 1 }, 
-        { "↲ Enter", 0, XK_Return, 1 }, 
+        { "↲Enter", 0, XK_Return, 1 }, 
 
         { 0 }, /* New row */
 
