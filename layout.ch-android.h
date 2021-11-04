@@ -67,6 +67,73 @@ static Key keys_ch_android[KEYS] = {
 
 };
 
+static Key keys_ch_androidShift[KEYS] = {
+        { "1", 0, 0x1000031, 1 }, 
+        { "2", 0, 0x1000032, 1 }, 
+        { "3", 0, 0x1000033, 1 }, 
+        { "4", 0, 0x1000034, 1 }, 
+        { "5", 0, 0x1000035, 1 }, 
+        { "6", 0, 0x1000036, 1 }, 
+        { "7", 0, 0x1000037, 1 }, 
+        { "8", 0, 0x1000038, 1 }, 
+        { "9", 0, 0x1000039, 1 }, 
+        { "0", 0, 0x1000030, 1 }, 
+
+        { 0 }, /* New row */
+
+        { "Q", 0, 0x1000051, 1 }, 
+        { "W", 0, 0x1000057, 1 }, 
+        { "E", 0, 0x1000045, 1 }, 
+        { "R", 0, 0x1000052, 1 }, 
+        { "T", 0, 0x1000054, 1 }, 
+        { "Z", 0, 0x100005a, 1 }, 
+        { "U", 0, 0x1000055, 1 }, 
+        { "I", 0, 0x1000049, 1 }, 
+        { "O", 0, 0x100004f, 1 }, 
+        { "P", 0, 0x1000050, 1 }, 
+        { "Ü", 0, 0x10000dc, 1 }, 
+
+        { 0 }, /* New row */
+
+        { "A", 0, 0x1000041, 1 }, 
+        { "S", 0, 0x1000053, 1 }, 
+        { "D", 0, 0x1000044, 1 }, 
+        { "F", 0, 0x1000046, 1 }, 
+        { "G", 0, 0x1000047, 1 }, 
+        { "H", 0, 0x1000048, 1 }, 
+        { "J", 0, 0x100004a, 1 }, 
+        { "K", 0, 0x100004b, 1 }, 
+        { "L", 0, 0x100004c, 1 }, 
+        { "Ö", 0, 0x10000d6, 1 }, 
+        { "Ä", 0, 0x10000c4, 1 }, 
+
+        { 0 }, /* New row */
+
+        { "⬆", 0, XK_Shift_L, 2 }, 
+        { "Y", 0, 0x1000059, 1 }, 
+        { "X", 0, 0x1000058, 1 }, 
+        { "C", 0, 0x1000043, 1 }, 
+        { "V", 0, 0x1000056, 1 }, 
+        { "B", 0, 0x1000042, 1 }, 
+        { "N", 0, 0x100004e, 1 }, 
+        { "M", 0, 0x100004d, 1 }, 
+        { "⌫", 0, XK_BackSpace, 2 }, 
+
+        { 0 }, /* New row */
+
+        { "!#1", 0, XK_Cancel, 2 }, 
+        { ",", 0, 0x100002c, 1 }, 
+        { "", 0, 0x1000020, 5.5 }, 
+        { ".", 0, 0x100002e, 1 }, 
+        { "↲", 0, XK_Return, 2 }, 
+
+        { 0 }, /* New row */
+
+
+        { 0 }, /* ending row */
+
+};
+
 static Key keys_ch_andrsymb1[KEYS] = {
         { "1", 0, 0x1000031, 1 }, 
         { "2", 0, 0x1000032, 1 }, 
@@ -397,15 +464,17 @@ static Key overlay[OVERLAYS] = {
         { 0, 0, XK_Cancel },  /* XK_Cancel signifies  overlay boundary */
 };
 
-#define LAYERS 3
+#define LAYERS 4
 static char* layer_names[LAYERS] = {
        "ch-android",
+       "shift",
        "andr-symbols1",
        "andr-symbols2",
 };
 
 static Key* available_layers[LAYERS] = {
         keys_ch_android,
+        keys_ch_androidShift,
         keys_ch_andrsymb1,
         keys_ch_andrsymb2,
 };
